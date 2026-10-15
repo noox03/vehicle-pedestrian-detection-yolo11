@@ -3,8 +3,8 @@
 Run it on the machine you want to report numbers for, and write the real
 output into the README (do not copy numbers from another machine).
 
-    python benchmark.py --source assets/foggy_input.jpg --runs 100
-    python benchmark.py --source assets/foggy_input.jpg --device cpu
+    python benchmark.py --source foggy_input.jpg --runs 100
+    python benchmark.py --source foggy_input.jpg --device cpu
 """
 import argparse
 import statistics
@@ -16,7 +16,7 @@ from ultralytics import YOLO
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--weights", default="weights/best.pt")
+    p.add_argument("--weights", default="best.pt")
     p.add_argument("--source", required=True, help="path to one image")
     p.add_argument("--runs", type=int, default=100)
     p.add_argument("--warmup", type=int, default=10)

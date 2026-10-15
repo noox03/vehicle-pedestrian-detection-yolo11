@@ -1,7 +1,7 @@
 """Run the trained YOLO11n model on an image, a folder of images, or a video.
 
 Examples:
-    python detect.py --source assets/foggy_input.jpg
+    python detect.py --source foggy_input.jpg
     python detect.py --source my_images/ --conf 0.25
     python detect.py --source road.mp4 --save-dir results
 """
@@ -61,7 +61,7 @@ def annotate_video(model, path, conf, imgsz, save_dir):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
-    p.add_argument("--weights", default="weights/best.pt")
+    p.add_argument("--weights", default="best.pt")
     p.add_argument("--source", required=True, help="image, folder of images, or video")
     p.add_argument("--conf", type=float, default=0.25, help="confidence threshold")
     p.add_argument("--imgsz", type=int, default=640)

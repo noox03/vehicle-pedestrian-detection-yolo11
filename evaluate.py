@@ -12,7 +12,7 @@ from ultralytics import YOLO
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--weights", default="weights/best.pt")
+    p.add_argument("--weights", default="best.pt")
     p.add_argument("--data", required=True, help="path to data.yaml")
     p.add_argument("--imgsz", type=int, default=640)
     p.add_argument("--split", default="val", choices=["val", "test"])

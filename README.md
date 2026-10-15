@@ -2,8 +2,8 @@
 
 A small object detector for two classes, **Vehicle** and **Pedestrian**, built for driver assistance (ADAS) style scenes. It is tested here on foggy road images, where objects have low contrast and distant cars are hard to see.
 
-![Foggy road input](assets/foggy_input.jpg)
-![Detections](assets/foggy_detection.jpg)
+![Foggy road input](foggy_input.jpg)
+![Detections](foggy_detection.jpg)
 
 *Left: input image. Right: model output (confidence threshold 0.25). Nearby vehicles are found with confidence around 0.9, and several distant, low contrast vehicles are also found.*
 
@@ -15,7 +15,7 @@ A small object detector for two classes, **Vehicle** and **Pedestrian**, built f
 | Starting point | pretrained `yolo11n.pt`, fine tuned |
 | Classes | Vehicle, Pedestrian |
 | Training | 150 epochs, image size 640, batch size 16, on Kaggle |
-| Weights | `weights/best.pt` (about 5 MB) |
+| Weights | `best.pt` (about 5 MB) |
 
 ## Results
 
@@ -35,7 +35,7 @@ The training data was provided by my school (ENSAM Casablanca) as part of my Mas
 
 ## Method
 
-I fine tuned the pretrained `yolo11n.pt` model from Ultralytics on the two class dataset for 150 epochs at image size 640 with batch size 16, training on Kaggle. I kept the checkpoint with the best validation score (`weights/best.pt`) and evaluated it with precision, recall, mAP50 and mAP50 to 95. I then tested it on foggy road images, where small distant objects get lower confidence.
+I fine tuned the pretrained `yolo11n.pt` model from Ultralytics on the two class dataset for 150 epochs at image size 640 with batch size 16, training on Kaggle. I kept the checkpoint with the best validation score (`best.pt`) and evaluated it with precision, recall, mAP50 and mAP50 to 95. I then tested it on foggy road images, where small distant objects get lower confidence.
 
 ## Usage
 
@@ -43,14 +43,14 @@ I fine tuned the pretrained `yolo11n.pt` model from Ultralytics on the two class
 pip install -r requirements.txt
 
 # one image (saves the result in results/)
-python detect.py --source assets/foggy_input.jpg
+python detect.py --source foggy_input.jpg
 
 # a folder of images, or a video
 python detect.py --source my_images/
 python detect.py --source road.mp4
 
 # speed measurement
-python benchmark.py --source assets/foggy_input.jpg --runs 100
+python benchmark.py --source foggy_input.jpg --runs 100
 
 # accuracy on a labelled validation set (YOLO format data.yaml)
 python evaluate.py --data path/to/data.yaml
